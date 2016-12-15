@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 21:01:28 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/14 21:02:51 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/15 12:31:01 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,15 +55,13 @@
 # define COMMENT_LENGTH		(2048)
 # define COREWAR_EXEC_MAGIC	0xea83f3
 
-typedef char			t_arg_type;
-
 typedef struct			s_op
 {
 	char				*name;
 	unsigned char		nbr_param;
 	char				p_types[4];
 	char				opcode;
-	int					nbr_cycle;
+	int					nbr_cycles;
 	char				*comment;
 	bool				is_p;
 	bool				is_idx;
@@ -77,23 +75,23 @@ typedef struct			s_header
 	char				comment[COMMENT_LENGTH + 1];
 }						t_header;
 
-typedef struct			s_process
+typedef struct			s_pro
 {
-	int					position;
+	int					pc;
 	int					curr_op;
-	int					chmp;
+	int					champ;
 	int					cycles_to_exec;
 	int					reg[REG_NUMBER];
 	int					carry;
-	struct s_process	*next;
-	struct s_process	**start;
+	struct s_pro		*next;
+	struct s_pro		**start;
 	int					lives;
-}						t_process;
+}						t_pro;
 
 typedef struct			s_cycle
 {
-	t_process			**proc;
-	int					process_nb;
+	t_pro				**pro;
+	int					pro_nbr;
 	int					cycle_to_die;
 	int					cycles_done;
 	int					dump_cycle;

@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 20:15:16 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/14 21:40:34 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/15 12:47:57 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void		init_vm(t_vm **vm)
 	(*vm)->o_graphic = 0;
 	(*vm)->nbr_champs = 0;
 	(*vm)->ram = NULL;
-	(*vm)->dump_cycles = -1;
+	(*vm)->dump_cycle = -1;
 }
 
 static void		check_arg(t_vm **vm, int ac, char **av)
@@ -36,7 +36,7 @@ static void		check_arg(t_vm **vm, int ac, char **av)
 			if (ft_atoi(av[i + 1]) > 0 || ft_strcmp(av[i], "0") == 0)
 			{
 				(*vm)->o_dump = 1;
-				(*vm)->dump_cycles = ft_atoi(av[++i]);
+				(*vm)->dump_cycle = ft_atoi(av[++i]);
 			}
 			else
 				ft_error("-d doit etre suivi par un unsigned int");

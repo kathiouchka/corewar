@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 20:11:48 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/14 21:06:51 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/15 12:42:11 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void			corewar_end(t_vm *vm)
 	free(vm);
 }
 
-/*void			(*g_exec_op[17])(t_vm *vm, t_process *pro, char p_code[4]
+void			(*g_exec_op[17])(t_vm *vm, t_pro *pro, char p_code[4]
 		, int p_val[4]) =
 {
 	ft_live,
@@ -44,7 +44,7 @@ void			corewar_end(t_vm *vm)
 	ft_lfork,
 	ft_aff
 };
-*/
+
 
 void		ft_error(char *str)
 {

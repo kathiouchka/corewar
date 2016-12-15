@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 21:00:01 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/14 21:44:30 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/15 12:55:54 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct		s_champs
 
 typedef struct		s_vm
 {
-	unsigned int	dump_cycles;
+	unsigned int	dump_cycle;
 	int				o_dump;
 	int				o_graphic;
 	int				nbr_live;
@@ -51,6 +51,7 @@ typedef struct		s_vm
 	char			**av;
 	t_ram			*ram;
 	t_champs		*champs;
+	t_cycle			*cycle;
 }					t_vm;
 //ERROR
 void			ft_error(char *str);
@@ -76,5 +77,28 @@ unsigned short	bswap_16(unsigned short value);
 unsigned int	bswap_32(unsigned int value);
 //START
 void	start_fight(t_vm *vm);
+//COUNT
+int			count_champs(t_vm *vm);
+//OP
+void		ft_live(t_vm *vm, t_pro *pro, char p_code[4], int p_val[4]);
+void		ft_st(t_vm *vm, t_pro *pro, char p_code[4], int p_val[4]);
+void		ft_ld(t_vm *vm, t_pro *pro, char p_code[4], int p_val[4]);
+void		ft_and(t_vm *vm, t_pro *pro, char p_code[4], int p_val[4]);
+void		ft_sub(t_vm *vm, t_pro *pro, char p_code[4], int p_val[4]);
+void		ft_add(t_vm *vm, t_pro *pro, char p_code[4], int p_val[4]);
+void		ft_or(t_vm *vm, t_pro *pro, char p_code[4], int p_val[4]);
+void		ft_xor(t_vm *vm, t_pro *pro, char p_code[4], int p_val[4]);
+void		ft_ldi(t_vm *vm, t_pro *pro, char p_code[4], int p_val[4]);
+void		ft_lldi(t_vm *vm, t_pro *pro, char p_code[4], int p_val[4]);
+void		ft_sti(t_vm *vm, t_pro *pro, char p_code[4], int p_val[4]);
+void		ft_lld(t_vm *vm, t_pro *pro, char p_code[4], int p_val[4]);
+void		ft_lfork(t_vm *vm, t_pro *pro, char p_code[4], int p_val[4]);
+void		ft_fork(t_vm *vm, t_pro *pro, char p_code[4], int p_val[4]);
+void		ft_zjmp(t_vm *vm, t_pro *pro, char p_code[4], int p_val[4]);
+void		ft_aff(t_vm *vm, t_pro *pro, char p_code[4], int p_val[4]);
+
+//CYCLE
+void			init_cycle(t_cycle *cycle, t_vm *vm);
+int		update_cycle(t_cycle *cycle, t_vm *vm);
 
 #endif
