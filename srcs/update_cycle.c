@@ -6,11 +6,54 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 12:52:36 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/15 12:55:40 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/15 13:06:57 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
+
+int		count_pro(t_pro *pro)
+{
+	int		i;
+
+	i = 0;
+	while (pro)
+	{
+		pro = pro->next;
+		i++;
+	}
+	return (i);
+}
+
+int		nbr_live_done(t_pro **pro)
+{
+	t_pro	*tmp;
+	int		ret;
+
+	ret = 0;
+	if (pro && *pro)
+	{
+		tmp = *pro;
+		while (tmp)
+		{
+			ret += tmp->lives;
+			tmp->lives = 0;
+			tmp = tmp->next;
+		}
+	}
+	return (ret);
+}
+
+void	update_cycle_to_die(t_cycle *cycle)
+{
+	if (nbr_live_done(cycle->pro) >= NBR_LIVE || cycle->checks_done >= MAX_CHECKS)
+	{
+		cycle->cycle_to_die -= CYCLE_DELTA;
+		cycle->checks_done = 0;
+	}
+	else
+		cycle->checks_done++;
+}
 
 int		update_cycle(t_cycle *cycle, t_vm *vm)
 {

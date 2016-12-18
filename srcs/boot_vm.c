@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 20:15:16 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/15 12:47:57 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/18 20:11:56 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,13 @@ static void		check_arg(t_vm **vm, int ac, char **av)
 			(*vm)->o_graphic = 1;
 		else if (ft_strcmp(av[i], "-n") == 0)
 			break ;
+		else
+			ft_error("ERROR");
 	}
 	(*vm)->av = ft_arrsub(av, i, array_size(av) - i);
 	(*vm)->nbr_champs = count_champs(*vm);
 }
+
 
 t_vm			*boot_vm(t_vm *vm, int ac, char **av)
 {

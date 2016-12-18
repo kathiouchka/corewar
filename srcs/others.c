@@ -6,11 +6,31 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 20:24:23 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/14 20:45:55 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/15 13:19:43 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
+
+char	*ft_strrev(char *s)
+{
+	char	*rev;
+	int		i;
+	int		size;
+
+	if (s == NULL)
+		return (NULL);
+	i = 0;
+	size = ft_strlen(s);
+	rev = (char *)malloc(sizeof(char) * size + 1);
+	if (rev == NULL)
+		return (NULL);
+	size--;
+	while (size != -1)
+		rev[i++] = s[size--];
+	rev[i] = '\0';
+	return (rev);
+}
 
 int		array_size(char **array)
 {

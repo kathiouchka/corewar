@@ -1,22 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zjmp.c                                             :+:      :+:    :+:   */
+/*   base_operations.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/28 17:23:44 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/18 19:03:25 by ybeaure          ###   ########.fr       */
+/*   Created: 2016/12/15 13:15:03 by ybeaure           #+#    #+#             */
+/*   Updated: 2016/12/15 13:17:39 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-void		ft_zjmp(t_vm *vm, t_pro *pro, char p_code[4], int p_val[4])
+char		*ft_base16(unsigned char number)
 {
-	vm->o_dump = vm->o_dump + 1 - 1;
-	if (pro->carry == 1 && check_params(9, p_code, p_val))
+	long unsigned int	div;
+	int					mod;
+	char				*convert;
+	int					i;
+
+	i = 0;
+	convert = ft_strnew(11);
+	div = number;
+	while (div != 0)
 	{
-		pro->pc = (pro->pc + ((signed short)p_val[0] % IDX_MOD) + MEM_SIZE) % MEM_SIZE;
+		div = number / 16;
+		mod = number / 16;
+		number = div;
+		if (mod > 9)
+			convert[i++] = mod + 87;
+		else
+			convert[i++] = mod + 48;
 	}
+	convert = ft_strrev(convert);
+	return (convert[0] == 0 ? "0" : convert);
 }

@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 21:00:01 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/15 12:55:54 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/18 19:04:11 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ t_vm			*boot_vm(t_vm *vm, int ac, char **av);
 //OTHERS
 char			**ft_arrsub(char **src, unsigned int start, unsigned int len);
 int				array_size(char **array);
+char	*ft_strrev(char *s);
 
 //INIT
 t_champs		*init_champs(t_vm *vm);
@@ -79,6 +80,7 @@ unsigned int	bswap_32(unsigned int value);
 void	start_fight(t_vm *vm);
 //COUNT
 int			count_champs(t_vm *vm);
+void			(*g_exec_op[17])(t_vm *vm, t_pro *pro, char p_code[4], int p_val[4]);
 //OP
 void		ft_live(t_vm *vm, t_pro *pro, char p_code[4], int p_val[4]);
 void		ft_st(t_vm *vm, t_pro *pro, char p_code[4], int p_val[4]);
@@ -100,5 +102,20 @@ void		ft_aff(t_vm *vm, t_pro *pro, char p_code[4], int p_val[4]);
 //CYCLE
 void			init_cycle(t_cycle *cycle, t_vm *vm);
 int		update_cycle(t_cycle *cycle, t_vm *vm);
+//SEARCH_AND_DESTROY
+t_pro	*find_dead_pro(t_pro **pro);
+void		kill_pro(t_pro *pro, t_vm *vm);
+//CONVERT
+char		*ft_base16(unsigned char number);
+//EXEC
+void		exec_pro(t_pro **pro, t_vm *vm);
+//CHECKS
+int				get_new_p_val(t_pro *pro, t_vm *vm, int p_val, int p_code);
+int			get_new_lp_val(t_pro *pro, t_vm *vm, int p_val, int p_code);
+int				check_params(char opcode, char p_code[4], int p_val[4]);
+//GET
+int			get_p_len(char p_code, char op_code);
+int			get_p_info(t_pro *pro, t_vm *vm, char p_code[4], int p_val[4]);
+
 
 #endif

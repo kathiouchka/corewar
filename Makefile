@@ -6,31 +6,36 @@
 #    By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/25 09:52:13 by ybeaure           #+#    #+#              #
-#    Updated: 2016/12/15 12:56:04 by ybeaure          ###   ########.fr        #
+#    Updated: 2016/12/18 20:03:26 by ybeaure          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME =		corewar
 
-FILES =		main.c \
-			boot_vm.c \
-			op.c \
-			init_champs.c \
-			init_cycle.c \
-			file_parsing.c \
-			others.c \
-			start_fight.c \
-			init_ram.c \
-			b_swap.c \
-			aff.c \
-			add_sub_and.c \
-			fork_lfork.c \
-			ld_lld_st.c \
-			ldi_lldi_sti.c \
-			live.c \
-			or_xor.c \
-			zjmp.c \
-			update_cycle.c \
+FILES =	add_sub_and.c \
+		aff.c \
+		b_swap.c \
+		base_operations.c \
+		boot_vm.c \
+		checks.c \
+		exec.c \
+		file_parsing.c \
+		fork_lfork.c \
+		get.c \
+		init_champs.c \
+		init_cycle.c \
+		init_ram.c \
+		ld_lld_st.c \
+		ldi_lldi_sti.c \
+		live.c \
+		main.c \
+		op.c \
+		or_xor.c \
+		others.c \
+		search_and_destroy.c \
+		start_fight.c \
+		update_cycle.c \
+		zjmp.c \
 
 SRCS =		$(addprefix srcs/, $(FILES))
 
